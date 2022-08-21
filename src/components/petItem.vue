@@ -48,7 +48,7 @@ export default {
         axios.get('../..//public/pets.json')
         .then(result => {
             this.pet_arr = result
-            console.log(this.pet_arr.data[0].name)
+            console.log(result)
         })
         .catch(error => {
             console.log(error)

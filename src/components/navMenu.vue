@@ -43,32 +43,44 @@
         :visible.sync="petDialogVisible"
         width="30%"
       >
-        <el-form ref="form" :model="form" label-width="80px">
+        <el-form ref="form" :model="petForm" label-width="100px">
           <el-form-item label="Name">
-            <el-input v-model="form.name"></el-input>
+            <el-input v-model="petForm.name"></el-input>
           </el-form-item>
           <el-form-item label="Age">
-            <el-input v-model="form.age"></el-input>
+            <el-input v-model="petForm.age"></el-input>
           </el-form-item>
           <el-form-item label="Breed">
-            <el-input v-model="form.breed"></el-input>
+            <el-input v-model="petForm.breed"></el-input>
           </el-form-item>
           <el-form-item label="Address">
-            <el-input v-model="form.region"></el-input>
+            <el-input v-model="petForm.region"></el-input>
           </el-form-item>
           <el-form-item label="Health">
-            <el-switch v-model="form.health"></el-switch>
+            <el-switch v-model="petForm.health"></el-switch>
           </el-form-item>
           <el-form-item label="Lost">
-            <el-switch v-model="form.lost"></el-switch>
+            <el-switch v-model="petForm.lost"></el-switch>
           </el-form-item>
           <el-form-item label="Birth">
-            <el-date-picker
-              v-model="value1"
-              type="date"
-              placeholder="select a date"
-            >
+            <el-date-picker type="date" placeholder="select a date">
             </el-date-picker>
+          </el-form-item>
+          <el-form-item label="Certificate">
+            <el-upload
+              class="upload-demo"
+              drag
+              action="https://jsonplaceholder.typicode.com/posts/"
+              multiple
+            >
+              <i class="el-icon-upload"></i>
+              <div class="el-upload__text">
+                drag the file here or<em>click here</em>
+              </div>
+              <div class="el-upload__tip" slot="tip">
+                Only JPG/PNG files with maximum size of 500kb
+              </div>
+            </el-upload>
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
@@ -85,12 +97,12 @@
         :visible.sync="userDialogVisible"
         width="30%"
       >
-        <el-form ref="form" :model="form" label-width="80px">
+        <el-form ref="form" :model="userForm" label-width="80px">
           <el-form-item label="Name">
-            <el-input v-model="form.name"></el-input>
+            <el-input v-model="userForm.name"></el-input>
           </el-form-item>
-          <el-form-item label="Age">
-            <el-input v-model="form.age"></el-input>
+          <el-form-item label="E-Mail">
+            <el-input v-model="userForm.email"></el-input>
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
@@ -102,11 +114,7 @@
       </el-dialog>
     </div>
     <div>
-      <el-dialog
-        title="Timeline"
-        :visible.sync="devDialogVisible"
-        width="30%"
-      >
+      <el-dialog title="Timeline" :visible.sync="devDialogVisible" width="30%">
         <el-timeline>
           <el-timeline-item timestamp="2022/8/21" placement="top">
             <el-card>
@@ -152,13 +160,17 @@ export default {
       petDialogVisible: false,
       userDialogVisible: false,
       devDialogVisible: false,
-      form: {
+      petForm: {
         name: "",
         age: "",
         breed: "",
         region: "",
         health: "",
         lost: "",
+      },
+      userForm: {
+        name: "",
+        email: "",
       },
     };
   },
