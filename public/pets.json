@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Gina",
+    "picture": "require('../assets/french-bulldog.jpeg')",
+    "age": 3,
+    "breed": "Scottish Terrier",
+    "location": "Tooleville, West Virginia",
+    "lost": "No",
+    "vaccinated": "Yes",
+    "health": "Yes",
+    "sex": "Male"
+  },
+  {
+    "id": 2,
+    "name": "Collins",
+    "picture": "require('../assets/golden-retriever.jpeg')",
+    "age": 2,
+    "breed": "French Bulldog",
+    "location": "Freeburn, Idaho",
+    "lost": "Yes",
+    "vaccinated": "Yes",
+    "health": "No",
+    "sex": "Male"
+  },
+  {
+    "id": 3,
+    "name": "Melissa",
+    "picture": "require('../assets/scottish-terrier.jpeg')",
+    "age": 1,
+    "breed": "Boxer",
+    "location": "Camas, Pennsylvania",
+    "lost": "Yes",
+    "vaccinated": "Yes",
+    "health": "Yes",
+    "sex": "Female"
+  },
+  {
+    "id": 4,
+    "name": "Jeanine",
+    "picture": "require('../assets/boxer.jpeg')",
+    "age": 5,
+    "breed": "French Bulldog",
+    "location": "Gerber, South Dakota",
+    "lost": "No",
+    "vaccinated": "Yes",
+    "health": "Yes",
+    "sex": "Male"
+  },
+  {
+    "id": 5,
+    "name": "Elvia",
+    "picture": "require('../assets/french-bulldog.jpeg')",
+    "age": 3,
+    "breed": "French Bulldog",
+    "location": "Innsbrook, Illinois",
+    "lost": "Yes",
+    "vaccinated": "Yes",
+    "health": "Yes",
+    "sex": "Female"
+  }
+]
