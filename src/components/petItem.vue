@@ -6,6 +6,7 @@
         v-for="(o, index) in 4"
         :key="o"
         :offset="index > 0 ? 2 : 0"
+
       >
         <el-card :body-style="{ padding: '0px' }">
           <img :src="dogImg_list[index].img" class="image" />

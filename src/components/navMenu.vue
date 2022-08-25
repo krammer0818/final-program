@@ -27,11 +27,11 @@
             >
           </el-menu-item-group>
         </el-submenu>
-        <!-- <el-menu-item index="2">
-          <i class="el-icon-document"></i>
-          <span slot="title">help</span>
-        </el-menu-item> -->
-        <el-menu-item index="2" @click="devDialogVisible = true">
+        <el-menu-item index="2" @click="actDialogVisible = true">
+          <i class="el-icon-user"></i>
+          <span slot="title">Account</span>
+        </el-menu-item>
+        <el-menu-item index="3" @click="devDialogVisible = true">
           <i class="el-icon-medal-1"></i>
           <span slot="title">Update log</span>
         </el-menu-item>
@@ -48,7 +48,11 @@
             <el-input v-model="petForm.name"></el-input>
           </el-form-item>
           <el-form-item label="Age">
-            <el-input v-model="petForm.age"></el-input>
+            <el-input-number
+              v-model="petForm.age"
+              :min="1"
+              :max="15"
+            ></el-input-number>
           </el-form-item>
           <el-form-item label="Breed">
             <el-input v-model="petForm.breed"></el-input>
@@ -66,12 +70,12 @@
             <el-date-picker type="date" placeholder="select a date">
             </el-date-picker>
           </el-form-item>
-          <el-form-item label="Certificate">
+          <el-form-item label="Photo">
             <el-upload
               class="upload-demo"
               drag
               action="https://jsonplaceholder.typicode.com/posts/"
-              multiple
+              :show-file-list="true"
             >
               <i class="el-icon-upload"></i>
               <div class="el-upload__text">
@@ -85,7 +89,7 @@
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="petDialogVisible = false">Cancel</el-button>
-          <el-button type="primary" @click="petDialogVisible = false"
+          <el-button type="primary" @click="petDV()"
             >Confirm</el-button
           >
         </span>
@@ -104,15 +108,76 @@
           <el-form-item label="E-Mail">
             <el-input v-model="userForm.email"></el-input>
           </el-form-item>
+          <el-form-item label="Phone">
+            <el-input v-model="userForm.phone"></el-input>
+          </el-form-item>
+          <el-form-item label="Location">
+            <el-input v-model="userForm.location"></el-input>
+          </el-form-item>
+          <el-form-item label="Postscript">
+            <el-input v-model="userForm.email"></el-input>
+          </el-form-item>
+          <el-form-item label="Address">
+            <el-input v-model="userForm.address"></el-input>
+          </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="userDialogVisible = false">Cancel</el-button>
-          <el-button type="primary" @click="userDialogVisible = false"
+          <el-button type="primary" @click="userDV()"
             >Confirm</el-button
           >
         </span>
       </el-dialog>
     </div>
+
+    <div>
+      <el-dialog
+        title="Information"
+        :visible.sync="actDialogVisible"
+        width="50%"
+      >
+<el-descriptions class="margin-top" :column="3" :size="size" border>
+    <template slot="extra">
+      <el-button type="primary" size="small">Modify</el-button>
+    </template>
+    <el-descriptions-item>
+      <template slot="label">
+        <i class="el-icon-user"></i>
+        Name
+      </template>
+      kooriookami
+    </el-descriptions-item>
+    <el-descriptions-item>
+      <template slot="label">
+        <i class="el-icon-mobile-phone"></i>
+        Phone
+      </template>
+      18100000000
+    </el-descriptions-item>
+    <el-descriptions-item>
+      <template slot="label">
+        <i class="el-icon-location-outline"></i>
+        Location
+      </template>
+      China
+    </el-descriptions-item>
+    <el-descriptions-item>
+      <template slot="label">
+        <i class="el-icon-tickets"></i>
+        Postscipt
+      </template>
+    </el-descriptions-item>
+    <el-descriptions-item>
+      <template slot="label">
+        <i class="el-icon-office-building"></i>
+        Contact Address
+      </template>
+      xxxxxxxx
+    </el-descriptions-item>
+  </el-descriptions>
+      </el-dialog>
+    </div>
+
     <div>
       <el-dialog title="Timeline" :visible.sync="devDialogVisible" width="30%">
         <el-timeline>
@@ -160,17 +225,22 @@ export default {
       petDialogVisible: false,
       userDialogVisible: false,
       devDialogVisible: false,
+      actDialogVisible: false,
       petForm: {
         name: "",
-        age: "",
+        age: "1",
         breed: "",
         region: "",
-        health: "",
-        lost: "",
+        health: true,
+        lost: false,
       },
       userForm: {
         name: "",
         email: "",
+        phone: "",
+        location: "",
+        postscript: "",
+        address: ""
       },
     };
   },
@@ -180,6 +250,20 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    petDV() {
+      this.petDialogVisible = false
+      this.successInfo()
+    },
+    userDV() {
+      this.userDialogVisible = false
+      this.successInfo()      
+    },
+    successInfo() {
+      this.$message({
+        message: 'Congratulations! Registered successfully',
+        type: 'success'
+      });
     },
   },
 };
