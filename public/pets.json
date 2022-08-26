@@ -1,15 +1,17 @@
 [
   {
     "id": 1,
-    "name": "Gina",
     "picture": "require('../assets/french-bulldog.jpeg')",
     "age": 3,
     "breed": "Scottish Terrier",
-    "location": "Tooleville, West Virginia",
+    "address": "Tooleville, West Virginia",
     "lost": "No",
+    "disease": "None",
+    "desinsectization": "Yes",
+    "VCcode": "15784",
     "vaccinated": "Yes",
-    "health": "Yes",
-    "sex": "Male"
+    "vetPhone": "5749-2574",
+    "phone": "9527-4682"
   },
   {
     "id": 2,
@@ -17,11 +19,14 @@
     "picture": "require('../assets/golden-retriever.jpeg')",
     "age": 2,
     "breed": "French Bulldog",
-    "location": "Freeburn, Idaho",
+    "address": "Freeburn, Idaho",
     "lost": "Yes",
+    "disease": "None",
+    "desinsectization": "Yes",
+    "VCcode": "47152",
     "vaccinated": "Yes",
-    "health": "No",
-    "sex": "Male"
+    "vetPhone": "8349-1576",
+    "phone": "4791-2674"
   },
   {
     "id": 3,
@@ -29,11 +34,14 @@
     "picture": "require('../assets/scottish-terrier.jpeg')",
     "age": 1,
     "breed": "Boxer",
-    "location": "Camas, Pennsylvania",
+    "address": "Camas, Pennsylvania",
     "lost": "Yes",
+    "disease": "None",
+    "desinsectization": "Yes",
+    "VCcode": "94286",
     "vaccinated": "Yes",
-    "health": "Yes",
-    "sex": "Female"
+    "vetPhone": "5815-4934",
+    "phone": "2574-6419"
   },
   {
     "id": 4,
@@ -41,11 +49,14 @@
     "picture": "require('../assets/boxer.jpeg')",
     "age": 5,
     "breed": "French Bulldog",
-    "location": "Gerber, South Dakota",
+    "address": "Gerber, South Dakota",
     "lost": "No",
+    "disease": "None",
+    "desinsectization": "Yes",
+    "VCcode": "74923",
     "vaccinated": "Yes",
-    "health": "Yes",
-    "sex": "Male"
+    "vetPhone": "5012-7011",
+    "phone": "9551-2034"
   },
   {
     "id": 5,
@@ -53,10 +64,13 @@
     "picture": "require('../assets/french-bulldog.jpeg')",
     "age": 3,
     "breed": "French Bulldog",
-    "location": "Innsbrook, Illinois",
+    "address": "Innsbrook, Illinois",
     "lost": "Yes",
+    "disease": "None",
+    "desinsectization": "Yes",
+    "VCcode": "54732",
     "vaccinated": "Yes",
-    "health": "Yes",
-    "sex": "Female"
+    "vetPhone": "2150-9864",
+    "phone": "1057-9425"
   }
 ]

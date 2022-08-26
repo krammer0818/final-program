@@ -41,11 +41,11 @@
       <el-dialog
         title="Information"
         :visible.sync="petDialogVisible"
-        width="30%"
+        width="40%"
       >
-        <el-form ref="form" :model="petForm" label-width="100px">
-          <el-form-item label="Name">
-            <el-input v-model="petForm.name"></el-input>
+        <el-form ref="form" :model="petForm" label-width="230px">
+          <el-form-item label="Breed">
+            <el-input v-model="petForm.breed"></el-input>
           </el-form-item>
           <el-form-item label="Age">
             <el-input-number
@@ -54,17 +54,26 @@
               :max="15"
             ></el-input-number>
           </el-form-item>
-          <el-form-item label="Breed">
-            <el-input v-model="petForm.breed"></el-input>
+          <el-form-item label="Vet Phone Number">
+            <el-input v-model="petForm.vetphone"></el-input>
+          </el-form-item>
+          <el-form-item label="Phone Number">
+            <el-input v-model="petForm.phone"></el-input>
           </el-form-item>
           <el-form-item label="Address">
             <el-input v-model="petForm.region"></el-input>
           </el-form-item>
-          <el-form-item label="Health">
-            <el-switch v-model="petForm.health"></el-switch>
+          <el-form-item label="Disease">
+            <el-input v-model="petForm.disease"></el-input>
           </el-form-item>
-          <el-form-item label="Lost">
-            <el-switch v-model="petForm.lost"></el-switch>
+          <el-form-item label="Vaccinated">
+            <el-switch v-model="petForm.vaccinated"></el-switch>
+          </el-form-item>
+          <el-form-item label="Desinsectization">
+            <el-switch v-model="petForm.desinsectization"></el-switch>
+          </el-form-item>
+          <el-form-item label="Vaccine Confirmation Code">
+            <el-input v-model="petForm.VCcode"></el-input>
           </el-form-item>
           <el-form-item label="Birth">
             <el-date-picker type="date" placeholder="select a date">
@@ -102,20 +111,8 @@
         width="30%"
       >
         <el-form ref="form" :model="userForm" label-width="80px">
-          <el-form-item label="Name">
-            <el-input v-model="userForm.name"></el-input>
-          </el-form-item>
-          <el-form-item label="E-Mail">
-            <el-input v-model="userForm.email"></el-input>
-          </el-form-item>
           <el-form-item label="Phone">
             <el-input v-model="userForm.phone"></el-input>
-          </el-form-item>
-          <el-form-item label="Location">
-            <el-input v-model="userForm.location"></el-input>
-          </el-form-item>
-          <el-form-item label="Postscript">
-            <el-input v-model="userForm.email"></el-input>
           </el-form-item>
           <el-form-item label="Address">
             <el-input v-model="userForm.address"></el-input>
@@ -227,12 +224,15 @@ export default {
       devDialogVisible: false,
       actDialogVisible: false,
       petForm: {
-        name: "",
         age: "1",
         breed: "",
         region: "",
-        health: true,
-        lost: false,
+        vaccinated: false,
+        VCcode: "",
+        desinsectization: false,
+        vetphone: "",
+        phone: "",
+        disease: ""
       },
       userForm: {
         name: "",
