@@ -37,13 +37,23 @@
             <span
               ><strong>vaccine code: </strong
               >{{ pet_arr.data[index].VCcode }}</span
-            ><br /><br />
+            ><br />
             <span
-              ><div>
-                <el-button type="primary">adopt</el-button
-                ><el-button type="primary">lost</el-button>
-                <el-button type="primary">receive</el-button>
-              </div></span
+              ><strong>lost: </strong
+              >{{ pet_arr.data[index].lost }}</span
+            ><br />
+            <br />
+            <span
+              ><div class="btn">
+                <el-button type="primary" @click="adopt()">adopt</el-button>
+                <el-button type="primary" @click="lost(index)">lost</el-button>
+              </div>
+              <div class="btn1">
+                <el-button type="primary" @click="found()"
+                  >found</el-button
+                >
+                <el-button type="primary" @click="receive(index)">receive</el-button>
+              </div> </span
             ><br /><br />
           </div>
         </el-card>
@@ -52,45 +62,85 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
-// import Web3 from 'web3'
+import axios from "axios";
+import Web3 from "web3";
 
 export default {
   data() {
     return {
-        pet_arr:[],
-        dogImg_list:[
-            {img: require('../assets/dog1.jpeg')},
-            {img: require('../assets/dog2.jpeg')},
-            {img: require('../assets/dog3.jpeg')},
-            {img: require('../assets/dog4.jpeg')}
-        ],
+      pet_arr: [],
+      dogImg_list: [
+        { img: require("../assets/dog1.jpeg") },
+        { img: require("../assets/dog2.jpeg") },
+        { img: require("../assets/dog3.jpeg") },
+        { img: require("../assets/dog4.jpeg") },
+      ],
     };
   },
   methods: {
     async getData() {
-        axios.get('../..//public/pets.json')
-        .then(result => {
-            this.pet_arr = result
-            console.log(result)
+      axios
+        .get("../..//public/pets.json")
+        .then((result) => {
+          this.pet_arr = result;
+          console.log(result);
         })
-        .catch(error => {
-            console.log(error)
-        })
-    }
-    // checkWeb3() {
-    //   var Web3 = require('web3');
-    //   if (typeof web3 !== 'undefined') { 
-    //       console.debug(web3.currentProvider);
-    //       web3 = new Web3(web3.currentProvider);
-    //   } else {
-    //       alert("No currentProvider for web3");
-    //   }
-    // }
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    lost(index) {
+      this.pet_arr.data[index].lost = "Yes"
+    },
+    receive(index) {
+      this.pet_arr.data[index].lost = "No"
+    },
+    adopt() {
+      let web3 = new Web3(window.web3.currentProvider);
+      let fromAddress = "0xf047D4100CB13B6De20B024b1D599dbA903D877e";
+      console.log(fromAddress);
+      let amount = 1 * Math.pow(10, 18);
+
+      let toAddress = "0x04d1A4c5D0936Da3108AfC391C7F20d6fBd09411";
+      // console.log(toAddress)
+      web3.eth.sendTransaction(
+        {
+          gas: 21000,
+          gasPrice: 5000000000,
+          from: fromAddress,
+          to: toAddress,
+          value: amount,
+        },
+        (err, result) => {
+          console.log("转账Hash=", result);
+        }
+      );
+    },
+    find() {
+      let web3 = new Web3(window.web3.currentProvider);
+      let fromAddress = "0x04d1A4c5D0936Da3108AfC391C7F20d6fBd09411";
+      console.log(fromAddress);
+      let amount = 1 * Math.pow(10, 18);
+
+      let toAddress = "0xf047D4100CB13B6De20B024b1D599dbA903D877e";
+      // console.log(toAddress)
+      web3.eth.sendTransaction(
+        {
+          gas: 21000,
+          gasPrice: 5000000000,
+          from: fromAddress,
+          to: toAddress,
+          value: amount,
+        },
+        (err, result) => {
+          console.log("转账Hash=", result);
+        }
+      );
+    },
   },
-  created () {
-    this.getData()
-  }
+  created() {
+    this.getData();
+  },
 };
 </script>
 
@@ -126,5 +176,14 @@ export default {
 
 .clearfix:after {
   clear: both;
+}
+.btn {
+  display: flex;
+  justify-content: space-between;
+}
+.btn1 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 </style>

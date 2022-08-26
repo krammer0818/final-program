@@ -15,7 +15,7 @@
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-edit"></i>
-            <span slot="title">register</span>
+            <span slot="title">Registration</span>
           </template>
           <el-menu-item-group>
             <span slot="title">type</span>
@@ -34,6 +34,10 @@
         <el-menu-item index="3" @click="devDialogVisible = true">
           <i class="el-icon-medal-1"></i>
           <span slot="title">Update log</span>
+        </el-menu-item>
+        <el-menu-item index="4" @click="connect()">
+          <i class="el-icon-connection"></i>
+          <span slot="title">Connection</span>
         </el-menu-item>
       </el-menu>
     </div>
@@ -98,9 +102,7 @@
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="petDialogVisible = false">Cancel</el-button>
-          <el-button type="primary" @click="petDV()"
-            >Confirm</el-button
-          >
+          <el-button type="primary" @click="petDV()">Confirm</el-button>
         </span>
       </el-dialog>
     </div>
@@ -120,9 +122,7 @@
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="userDialogVisible = false">Cancel</el-button>
-          <el-button type="primary" @click="userDV()"
-            >Confirm</el-button
-          >
+          <el-button type="primary" @click="userDV()">Confirm</el-button>
         </span>
       </el-dialog>
     </div>
@@ -133,45 +133,40 @@
         :visible.sync="actDialogVisible"
         width="50%"
       >
-<el-descriptions class="margin-top" :column="3" :size="size" border>
-    <template slot="extra">
-      <el-button type="primary" size="small">Modify</el-button>
-    </template>
-    <el-descriptions-item>
-      <template slot="label">
-        <i class="el-icon-user"></i>
-        Name
-      </template>
-      kooriookami
-    </el-descriptions-item>
-    <el-descriptions-item>
-      <template slot="label">
-        <i class="el-icon-mobile-phone"></i>
-        Phone
-      </template>
-      18100000000
-    </el-descriptions-item>
-    <el-descriptions-item>
-      <template slot="label">
-        <i class="el-icon-location-outline"></i>
-        Location
-      </template>
-      China
-    </el-descriptions-item>
-    <el-descriptions-item>
-      <template slot="label">
-        <i class="el-icon-tickets"></i>
-        Postscipt
-      </template>
-    </el-descriptions-item>
-    <el-descriptions-item>
-      <template slot="label">
-        <i class="el-icon-office-building"></i>
-        Contact Address
-      </template>
-      xxxxxxxx
-    </el-descriptions-item>
-  </el-descriptions>
+        <el-descriptions class="margin-top" :column="3" :size="size" border>
+          <template slot="extra">
+            <el-button type="primary" size="small" @click="getUserId()"
+              >Get ID</el-button
+            >
+          </template>
+          <el-descriptions-item>
+            <template slot="label">
+              <i class="el-icon-user"></i>
+              ID
+            </template>
+            {{userId}}
+          </el-descriptions-item>
+          <el-descriptions-item>
+            <template slot="label">
+              <i class="el-icon-mobile-phone"></i>
+              Phone
+            </template>
+            5493-5012
+          </el-descriptions-item>
+          <el-descriptions-item>
+            <template slot="label">
+              <i class="el-icon-tickets"></i>
+              Postscipt
+            </template>
+          </el-descriptions-item>
+          <el-descriptions-item>
+            <template slot="label">
+              <i class="el-icon-office-building"></i>
+              Contact Address
+            </template>
+            Tooleville, West Virginia
+          </el-descriptions-item>
+        </el-descriptions>
       </el-dialog>
     </div>
 
@@ -223,6 +218,7 @@ export default {
       userDialogVisible: false,
       devDialogVisible: false,
       actDialogVisible: false,
+      userId: "",
       petForm: {
         age: "1",
         breed: "",
@@ -232,7 +228,7 @@ export default {
         desinsectization: false,
         vetphone: "",
         phone: "",
-        disease: ""
+        disease: "",
       },
       userForm: {
         name: "",
@@ -240,7 +236,7 @@ export default {
         phone: "",
         location: "",
         postscript: "",
-        address: ""
+        address: "",
       },
     };
   },
@@ -252,19 +248,37 @@ export default {
       console.log(key, keyPath);
     },
     petDV() {
-      this.petDialogVisible = false
-      this.successInfo()
+      this.petDialogVisible = false;
+      this.successInfo();
     },
     userDV() {
-      this.userDialogVisible = false
-      this.successInfo()      
+      this.userDialogVisible = false;
+      this.successInfo();
     },
     successInfo() {
       this.$message({
-        message: 'Congratulations! Registered successfully',
-        type: 'success'
+        message: "Congratulations! Registered successfully",
+        type: "success",
       });
     },
+    getUserId() {
+      console.log(1)
+      this.userId = Math.floor(Math.random()*100)
+    },
+    connect() {
+      if (window.ethereum) {
+        window.ethereum.enable().then((res) => {
+        const h = this.$createElement;
+        this.$notify({
+          title: 'Wallet Address',
+          message: h('i', { style: 'color: teal'}, res[0])
+        });
+        });
+      } else {
+        alert("Please install MetaMask");
+      }
+    },
+
   },
 };
 </script>
