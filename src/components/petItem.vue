@@ -3,8 +3,8 @@
     <el-row>
       <el-col
         :span="4"
-        v-for="(o, index) in 4"
-        :key="o"
+        v-for="(item, index) in 4"
+        :key="item"
         :offset="index > 0 ? 2 : 0"
       >
         <el-card :body-style="{ padding: '0px' }">
@@ -42,10 +42,18 @@
               ><strong>lost: </strong
               >{{ pet_arr.data[index].lost }}</span
             ><br />
+            <span
+              ><strong>adopted: </strong
+              >{{ pet_arr.data[index].adopted }}</span
+            ><br />
+            <span
+              ><strong>owner: </strong
+              >{{ pet_arr.data[index].owner }}</span
+            ><br />
             <br />
             <span
               ><div class="btn">
-                <el-button type="primary" @click="adopt()">adopt</el-button>
+                <el-button type="primary" :disabled="pet_arr.data[index].alreadyAdopted" @click="adopt(index)">adopt</el-button>
                 <el-button type="primary" @click="lost(index)">lost</el-button>
               </div>
               <div class="btn1">
@@ -69,6 +77,7 @@ export default {
   data() {
     return {
       pet_arr: [],
+      userId: "",
       dogImg_list: [
         { img: require("../assets/dog1.jpeg") },
         { img: require("../assets/dog2.jpeg") },
@@ -95,10 +104,10 @@ export default {
     receive(index) {
       this.pet_arr.data[index].lost = "No"
     },
-    adopt() {
+    adopt(index) {
       let web3 = new Web3(window.web3.currentProvider);
       let fromAddress = "0xf047D4100CB13B6De20B024b1D599dbA903D877e";
-      console.log(fromAddress);
+      // console.log(fromAddress);
       let amount = 1 * Math.pow(10, 18);
 
       let toAddress = "0x04d1A4c5D0936Da3108AfC391C7F20d6fBd09411";
@@ -115,6 +124,12 @@ export default {
           console.log("转账Hash=", result);
         }
       );
+      this.pet_arr.data[index].adopted = "Yes"
+      this.pet_arr.data[index].alreadyAdopted = true
+      this.userId = sessionStorage.getItem('Id')
+      console.log(this.userId)
+      console.log(this.pet_arr.data[index].owner)
+      this.pet_arr.data[index].owner = this.userId
     },
     find() {
       let web3 = new Web3(window.web3.currentProvider);

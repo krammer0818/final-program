@@ -11,7 +11,10 @@
     "VCcode": "15784",
     "vaccinated": "Yes",
     "vetPhone": "5749-2574",
-    "phone": "9527-4682"
+    "phone": "9527-4682",
+    "adopted": "No",
+    "alreadyAdopted": false,
+    "owner": ""
   },
   {
     "id": 2,
@@ -26,7 +29,10 @@
     "VCcode": "47152",
     "vaccinated": "Yes",
     "vetPhone": "8349-1576",
-    "phone": "4791-2674"
+    "phone": "4791-2674",
+    "adopted": "Yes",
+    "alreadyAdopted": true,
+    "owner": "51"
   },
   {
     "id": 3,
@@ -41,7 +47,10 @@
     "VCcode": "94286",
     "vaccinated": "Yes",
     "vetPhone": "5815-4934",
-    "phone": "2574-6419"
+    "phone": "2574-6419",
+    "adopted": "Yes",
+    "alreadyAdopted": true,
+    "owner": "47"
   },
   {
     "id": 4,
@@ -56,7 +65,10 @@
     "VCcode": "74923",
     "vaccinated": "Yes",
     "vetPhone": "5012-7011",
-    "phone": "9551-2034"
+    "phone": "9551-2034",
+    "adopted": "No",
+    "alreadyAdopted": false,
+    "owner": ""
   },
   {
     "id": 5,
@@ -71,6 +83,9 @@
     "VCcode": "54732",
     "vaccinated": "Yes",
     "vetPhone": "2150-9864",
-    "phone": "1057-9425"
+    "phone": "1057-9425",
+    "adopted": "No",
+    "alreadyAdopted": false,
+    "owner": "40"
   }
 ]

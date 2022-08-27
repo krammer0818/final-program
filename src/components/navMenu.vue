@@ -229,6 +229,7 @@ export default {
         vetphone: "",
         phone: "",
         disease: "",
+        lost: "No"
       },
       userForm: {
         name: "",
@@ -250,6 +251,7 @@ export default {
     petDV() {
       this.petDialogVisible = false;
       this.successInfo();
+      this.submit()
     },
     userDV() {
       this.userDialogVisible = false;
@@ -261,9 +263,16 @@ export default {
         type: "success",
       });
     },
+    submit() {
+      sessionStorage.clear()
+      console.log(this.petForm)
+      sessionStorage.setItem('adopter',this.petForm)
+    },
     getUserId() {
       console.log(1)
       this.userId = Math.floor(Math.random()*100)
+      sessionStorage.setItem('Id',this.userId)
+
     },
     connect() {
       if (window.ethereum) {
