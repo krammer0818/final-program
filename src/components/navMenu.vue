@@ -151,7 +151,7 @@
               <i class="el-icon-mobile-phone"></i>
               Phone
             </template>
-            5493-5012
+            {{userForm.phone}}
           </el-descriptions-item>
           <el-descriptions-item>
             <template slot="label">
@@ -164,7 +164,7 @@
               <i class="el-icon-office-building"></i>
               Contact Address
             </template>
-            Tooleville, West Virginia
+            {{userForm.address}}
           </el-descriptions-item>
         </el-descriptions>
       </el-dialog>
@@ -232,7 +232,6 @@ export default {
         lost: "No"
       },
       userForm: {
-        name: "",
         email: "",
         phone: "",
         location: "",
@@ -256,6 +255,7 @@ export default {
     userDV() {
       this.userDialogVisible = false;
       this.successInfo();
+      sessionStorage.setItem('user',this.userForm)
     },
     successInfo() {
       this.$message({
