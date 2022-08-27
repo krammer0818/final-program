@@ -100,6 +100,25 @@ export default {
     },
     lost(index) {
       this.pet_arr.data[index].lost = "Yes"
+      let web3 = new Web3(window.web3.currentProvider);
+      let fromAddress = "0xf047D4100CB13B6De20B024b1D599dbA903D877e";
+      // console.log(fromAddress);
+      let amount = 1 * Math.pow(10, 18);
+
+      let toAddress = "0x04d1A4c5D0936Da3108AfC391C7F20d6fBd09411";
+      // console.log(toAddress)
+      web3.eth.sendTransaction(
+        {
+          gas: 21000,
+          gasPrice: 5000000000,
+          from: fromAddress,
+          to: toAddress,
+          value: amount,
+        },
+        (err, result) => {
+          console.log("转账Hash=", result);
+        }
+      );
     },
     receive(index) {
       this.pet_arr.data[index].lost = "No"
@@ -151,7 +170,7 @@ export default {
           console.log("转账Hash=", result);
         }
       );
-    },
+    }
   },
   created() {
     this.getData();
